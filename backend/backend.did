@@ -1,0 +1,17 @@
+type ClassDetails = 
+ record {
+   cons: vec text;
+   description: text;
+   name: text;
+   pros: vec text;
+   specialAbilities: opt vec text;
+ };
+type Class = 
+ record {
+   description: text;
+   name: text;
+ };
+service : {
+  getClassDetails: (text) -> (opt ClassDetails) query;
+  getClasses: () -> (vec Class) query;
+}
