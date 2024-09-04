@@ -4,12 +4,12 @@ import Text "mo:base/Text";
 import Hash "mo:base/Hash";
 
 actor {
-  type Class = {
+  type Role = {
     name: Text;
     description: Text;
   };
 
-  type ClassDetails = {
+  type RoleDetails = {
     name: Text;
     description: Text;
     pros: [Text];
@@ -17,37 +17,37 @@ actor {
     specialAbilities: ?[Text];
   };
 
-  stable var classes : [Class] = [
-    { name = "Paladin"; description = "A tank class that excels in defense" },
-    { name = "Warrior"; description = "A tank class focused on offense" },
-    { name = "White Mage"; description = "A healer class with powerful healing spells" },
-    { name = "Black Mage"; description = "A DPS class specializing in destructive magic" }
+  stable var roles : [Role] = [
+    { name = "Tank"; description = "Protects the party by absorbing damage" },
+    { name = "Healer"; description = "Keeps the party alive with healing magic" },
+    { name = "DPS"; description = "Deals high damage to enemies" },
+    { name = "Support"; description = "Provides buffs and utility to the party" }
   ];
 
-  let classDetails = HashMap.HashMap<Text, ClassDetails>(10, Text.equal, Text.hash);
+  let roleDetails = HashMap.HashMap<Text, RoleDetails>(10, Text.equal, Text.hash);
 
-  // Initialize class details
-  classDetails.put("Paladin", {
-    name = "Paladin";
-    description = "A tank class that excels in defense";
-    pros = ["Strong defensive abilities", "Can heal self and others"];
-    cons = ["Lower damage output", "Less mobility compared to other tanks"];
-    specialAbilities = ?["Divine Veil", "Hallowed Ground"];
+  // Initialize role details
+  roleDetails.put("Tank", {
+    name = "Tank";
+    description = "Protects the party by absorbing damage";
+    pros = ["High survivability", "Controls enemy positioning"];
+    cons = ["Lower damage output", "Requires good situational awareness"];
+    specialAbilities = ?["Damage mitigation cooldowns", "Aggro management"];
   });
 
-  classDetails.put("Warrior", {
-    name = "Warrior";
-    description = "A tank class focused on offense";
-    pros = ["High damage output for a tank", "Strong self-healing"];
-    cons = ["Requires good timing for defensive cooldowns", "Less party utility"];
-    specialAbilities = ?["Inner Release", "Holmgang"];
+  roleDetails.put("Healer", {
+    name = "Healer";
+    description = "Keeps the party alive with healing magic";
+    pros = ["Essential for party survival", "Can prevent wipes"];
+    cons = ["Pressure to keep everyone alive", "Limited offensive capabilities"];
+    specialAbilities = ?["Area of Effect healing", "Resurrection"];
   });
 
-  public query func getClasses() : async [Class] {
-    return classes;
+  public query func getRoles() : async [Role] {
+    return roles;
   };
 
-  public query func getClassDetails(className : Text) : async ?ClassDetails {
-    return classDetails.get(className);
+  public query func getRoleDetails(roleName : Text) : async ?RoleDetails {
+    return roleDetails.get(roleName);
   };
 }

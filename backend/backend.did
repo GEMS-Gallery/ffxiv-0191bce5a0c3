@@ -1,4 +1,4 @@
-type ClassDetails = 
+type RoleDetails = 
  record {
    cons: vec text;
    description: text;
@@ -6,12 +6,12 @@ type ClassDetails =
    pros: vec text;
    specialAbilities: opt vec text;
  };
-type Class = 
+type Role = 
  record {
    description: text;
    name: text;
  };
 service : {
-  getClassDetails: (text) -> (opt ClassDetails) query;
-  getClasses: () -> (vec Class) query;
+  getRoleDetails: (text) -> (opt RoleDetails) query;
+  getRoles: () -> (vec Role) query;
 }

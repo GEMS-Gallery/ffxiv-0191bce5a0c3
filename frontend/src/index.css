@@ -30,16 +30,16 @@ code {
   background-position: center;
 }
 
-.class-card {
+.role-card {
   background-color: rgba(192, 160, 128, 0.8);
   transition: transform 0.3s ease-in-out;
 }
 
-.class-card:hover {
+.role-card:hover {
   transform: scale(1.05);
 }
 
-.class-icon {
+.role-icon {
   background-color: #4a90e2;
   width: 64px;
   height: 64px;
@@ -63,4 +63,26 @@ code {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+.role-list {
+  position: fixed;
+  right: 0;
+  top: 64px;
+  bottom: 0;
+  width: 200px;
+  background-color: rgba(61, 61, 61, 0.9);
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.role-list-item {
+  color: white;
+  padding: 0.5rem 0;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+
+.role-list-item:hover {
+  color: #4a90e2;
 }
